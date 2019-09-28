@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "MydocomoNotify",
+    "version": "1.0",
+    "description": "Mydocomoの通信量の残りをPOSTできる拡張機能です。",
+    "options_ui": {
+        "page": "index.html",
+        "open_in_tab": true
+    },
+    "background":{
+        "scripts":["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.nttdocomo.co.jp/mydocomo/"
+            ],
+            "js": [
+                "PostGiga.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage",
+        "tabs",
+        "*://notify-api.line.me/*"
+    ]
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MydocomoNotify</title>
+</head>
+
+<body>
+    <div style="padding: 10px">
+        <h1>MydocomoNotify</h1>
+        <h2>Mydocomoの通信量の項目を取り出してPOSTする拡張機能です。</h2>
+    </div>
+    <div style="padding: 10px">
+        <h3>バックグラウンドでの実行の設定</h3>
+        <p>自動でMydocomoを開いて取得する機能です。</p>
+        <input type="checkbox" value="on" id="background_check"><label>利用する</label>
+        <p>起動時刻（２４時間表記で）</p>
+        <input type="number" value="0" id="background_hour">
+        <p>自動で開いてから閉じるまで</p>
+        <p>デフォルトは「20000」です</p>
+        <input type="number" value="20000" id="background_close">
+    </div>
+    <div style="padding: 10px">
+        <h3>遅延の設定</h3>
+        <p>取得までの時間を調整します。これはMydocomoが表示されるまで数秒かかるためです。</p>
+        <p>デフォルトは「3000」です</p>
+        <input id="late_input" type="number" value="3000" placeholder="ミリ秒で入力してね">
+    </div>
+    <div style="padding: 10px">
+        <h3>POSTの設定</h3>
+        <p>取得した通信量をREST APIで送信できます。</p>
+        <div>
+            <p>送信先リンク</p>
+            <input style="width: 300px" id="url_input" type="text" placeholder="URL">
+        </div>
+        <div>
+            <p>パラメーター（JSON）</p>
+            <p>「残りGB」で実際の<b>使用済み通信量</b>に置き換えます。</p>
+            <p>「トータル」で実際の<b>利用可能通信量</b>に置き換えます。</p>
+            <div>
+                <input class="par_key" placeholder="Key">
+                <input class="par_val" placeholder="value">
+            </div>
+            <div>
+                <input class="par_key" placeholder="Key">
+                <input class="par_val" placeholder="value">
+            </div>
+            <div>
+                <input class="par_key" placeholder="Key">
+                <input class="par_val" placeholder="value">
+            </div>
+        </div>
+        <div>
+            <p>認証（Authorization）必要な場合</p>
+            <input id="auth" placeholder="Authorization">
+        </div>
+        <div style="padding: 10px">
+            <input id="save_button" type="button" value="設定保存">
+        </div>
+        <div style="padding: 10px">
+            <input id="send_button" type="button" value="テスト送信">
+        </div>
+    </div>
+
+    <!-- HTMLファイル内にJS書くと怒られるので別に書く -->
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
